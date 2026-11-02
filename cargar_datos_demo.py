@@ -1,6 +1,8 @@
 """Crea una base SQLite de demostración a partir de los CSV. No altera src/repository.py."""
-import csv, sqlite3
+import csv
+import sqlite3
 from pathlib import Path
+
 p=Path(__file__).resolve().parent
 with sqlite3.connect(p/'pedidos_prueba.sqlite3') as db:
     db.execute('PRAGMA foreign_keys=ON')
