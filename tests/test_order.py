@@ -19,3 +19,19 @@ def test_customer_debt():
 def test_invalid_total(total):
     with pytest.raises(ValueError):
         Order(total).confirm()
+def test_vip_discount_200():
+    o = Order(200, vip=True)
+    assert o.confirm() == 170
+    assert o.discount == 30
+
+
+def test_regular_no_discount_200():
+    o = Order(200)
+    assert o.confirm() == 200
+    assert o.discount == 0
+
+def test_cannot_confirm_twice():
+    order = Order(100)
+    order.confirm()
+    with pytest.raises(ValueError, match="already confirmed"):
+        order.confirm()    
