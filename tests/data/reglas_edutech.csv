@@ -12,9 +12,3 @@ CP10,RN-03,limite,Saldo de 0.01 bloquea la emision,1000,999.99,,,SaldoPendiente
 CP11,RN-03,error,Saldo de 500 bloquea la emision,1000,500,,,SaldoPendiente
 CP12,RN-03,error,Sin ningun pago bloquea la emision,1000,0,,,SaldoPendiente
 
-def test_pago_parcial_confirmado_no_permite_certificado():
-    insc = Inscripcion(1000)
-    insc.confirmar_pago(500)
-    assert insc.estado == "INSCRITA"
-    with pytest.raises(SaldoPendiente):
-        insc.validar_emision_certificado()

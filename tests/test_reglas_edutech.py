@@ -70,3 +70,9 @@ def test_pago_rechazado_no_modifica_monto_pagado():
 def test_pago_no_positivo_es_invalido():
     with pytest.raises(ValueError):
         Inscripcion(1000).confirmar_pago(0)
+def test_pago_parcial_confirmado_no_permite_certificado():
+    insc = Inscripcion(1000)
+    insc.confirmar_pago(500)
+    assert insc.estado == "INSCRITA"
+    with pytest.raises(SaldoPendiente):
+        insc.validar_emision_certificado()
