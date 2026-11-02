@@ -1,0 +1,13 @@
+id_caso,regla,tipo,descripcion,costo_curso,monto,asistencia,calificacion,esperado
+CP01,RN-01,exito,Pago total confirma la inscripcion,1000,1000,,,INSCRITA
+CP02,RN-01,limite,Anticipo exacto del 50% confirma,1000,500,,,INSCRITA
+CP03,RN-01,limite,Un centavo menos del 50% se rechaza,1000,499.99,,,AnticipoInsuficiente
+CP04,RN-01,error,Anticipo de 10% se rechaza,1000,100,,,AnticipoInsuficiente
+CP05,RN-02,exito,Asistencia 85 y calificacion 78 da certificado,,,85,78,CERTIFICADO
+CP06,RN-02,limite,Asistencia 80 y calificacion 70 exactas dan certificado,,,80,70,CERTIFICADO
+CP07,RN-02,limite,Asistencia 79.99 con calificacion aprobatoria da constancia,,,79.99,90,CONSTANCIA
+CP08,RN-02,error,Calificacion 69.99 no acredita aunque asista al 100%,,,100,69.99,NO_ACREDITADO
+CP09,RN-03,exito,Saldo en cero permite emitir certificado,1000,1000,,,EMITE
+CP10,RN-03,limite,Saldo de 0.01 bloquea la emision,1000,999.99,,,SaldoPendiente
+CP11,RN-03,error,Saldo de 500 bloquea la emision,1000,500,,,SaldoPendiente
+CP12,RN-03,error,Sin ningun pago bloquea la emision,1000,0,,,SaldoPendiente
